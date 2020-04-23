@@ -120,7 +120,7 @@ const Dashboard: React.FC = () => {
         <img src={logoImg} alt="Github Voyager" />
       </a>
 
-      <Title>Explore repositórios no Github</Title>
+      <Title>Explore repositórios no Github.</Title>
 
       <Snackbar
         open={openToast}
@@ -139,7 +139,6 @@ const Dashboard: React.FC = () => {
               <Fab
                 variant="extended"
                 type="button"
-                color="primary"
                 onClick={() => scroll({ x: 20, y: 0 })}
               >
                 <FiNavigation2 />

@@ -117,3 +117,12 @@ export const SkeletonDiv = styled.div`
     margin-left: 16px;
   }
 `;
+
+export const FabStyled = styled.div`
+  margin: 0px;
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+`;

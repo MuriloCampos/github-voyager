@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
+import { FiChevronRight, FiNavigation2 } from 'react-icons/fi';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Pagination from '@material-ui/lab/Pagination';
@@ -8,13 +8,21 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import Fab from '@material-ui/core/Fab';
+import { ScrollTo } from 'react-scroll-to';
 
 import api from '../../services/api';
 import { languages } from '../../utils/languages';
 
 import logoImg from '../../assets/logo.png';
 
-import { Title, Repositories, PagesIndex, SkeletonDiv } from './styles';
+import {
+  Title,
+  Repositories,
+  PagesIndex,
+  SkeletonDiv,
+  FabStyled,
+} from './styles';
 
 interface Repository {
   full_name: string;
@@ -100,7 +108,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImg} alt="Github Voyager" />
+      <a href={window.location.href}>
+        <img src={logoImg} alt="Github Voyager" />
+      </a>
+
       <Title>Explore repositórios no Github</Title>
 
       <Snackbar
@@ -112,6 +123,24 @@ const Dashboard: React.FC = () => {
           {error}
         </Alert>
       </Snackbar>
+
+      {numberOfPages !== 0 && (
+        <FabStyled>
+          <ScrollTo>
+            {({ scroll }) => (
+              <Fab
+                variant="extended"
+                type="button"
+                color="primary"
+                onClick={() => scroll({ x: 20, y: 0 })}
+              >
+                <FiNavigation2 />
+                Ir para o topo
+              </Fab>
+            )}
+          </ScrollTo>
+        </FabStyled>
+      )}
 
       <Autocomplete
         id="combo-box-demo"

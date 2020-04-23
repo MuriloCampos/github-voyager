@@ -29,6 +29,7 @@
         "prettier"
     ],
     "rules": {
+      "react/no-array-index-key": "off",
       "indent": "off",
       "react/jsx-indent": "off",
       "react/jsx-props-no-spreading": "off",

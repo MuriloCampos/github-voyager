@@ -59,19 +59,26 @@ const Dashboard: React.FC = () => {
       setError('');
 
       const repos = response.data.items;
-      const pagesCount: number = parseInt(
-        response.headers.link.split(',')[1].split('&')[1].split('=')[1],
-        10,
-      );
 
-      setNumberOfPages(pagesCount);
+      if (numberOfPages === 0) {
+        const pagesCount: number = parseInt(
+          response.headers.link.split(',')[1].split('&')[1].split('=')[1],
+          10,
+        );
+        setNumberOfPages(pagesCount);
+      }
 
       setCurrentPageRepos(repos);
     } catch (err) {
-      if (page > numberOfPages && numberOfPages) {
-        setError(`Esta listagem possui ${numberOfPages} páginas!`);
-      } else {
-        setError(`Houve um problema na requisição. ${err.message} !`);
+      switch (err.message) {
+        case 'Network Error':
+          setError(`Limite de requisições por minuto atingido !`);
+          break;
+        case 'Request failed with status code 422':
+          setError(`Nenhum repositorio encontrado !`);
+          break;
+        default:
+          setError(`Houve um problema na requisição. ${err.message} !`);
       }
 
       setOpenToast(true);
@@ -149,7 +156,7 @@ const Dashboard: React.FC = () => {
       )}
 
       <Autocomplete
-        id="combo-box-demo"
+        id="autocomplete-input"
         options={languages}
         getOptionLabel={option => option}
         autoHighlight
@@ -192,7 +199,11 @@ const Dashboard: React.FC = () => {
 
       <PagesIndex>
         {currentPageRepos.length > 0 && (
-          <Pagination count={100} page={page} onChange={handlePageChange} />
+          <Pagination
+            count={numberOfPages}
+            page={page}
+            onChange={handlePageChange}
+          />
         )}
       </PagesIndex>
 

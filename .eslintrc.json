@@ -29,6 +29,9 @@
         "prettier"
     ],
     "rules": {
+      "indent": "off",
+      "react/jsx-indent": "off",
+      "react/jsx-props-no-spreading": "off",
       "prettier/prettier": "error",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
@@ -40,6 +43,12 @@
         {
           "ts": "never",
           "tsx": "never"
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        {
+          "allowExpressions": true
         }
       ]
     },

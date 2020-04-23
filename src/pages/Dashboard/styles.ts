@@ -61,6 +61,12 @@ export const Repositories = styled.div`
       strong {
         font-size: 20px;
         color: #3d3d4d;
+        @media only screen and (max-width: 768px) {
+          max-width: 200px;
+        }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       p {

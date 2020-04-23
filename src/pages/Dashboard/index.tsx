@@ -14,7 +14,7 @@ import { ScrollTo } from 'react-scroll-to';
 import api from '../../services/api';
 import { languages } from '../../utils/languages';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/logo.svg';
 
 import {
   Title,
@@ -43,29 +43,37 @@ const Dashboard: React.FC = () => {
   const [currentPageRepos, setCurrentPageRepos] = useState<Repository[]>([]);
   const [openToast, setOpenToast] = React.useState(false);
 
-  function Alert(props: AlertProps): JSX.Element {
+  const Alert = useCallback((props: AlertProps): JSX.Element => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
+  }, []);
 
   const getRepos = useCallback(async (): Promise<void> => {
     try {
       setLoading(true);
       const response = await api.get(
-        `search/repositories?q=language:${languageFilter}&page=${page}&per_page=10`,
+        `search/repositories?q=language:${encodeURIComponent(
+          languageFilter,
+        )}&page=${page}&per_page=10`,
       );
       setLoading(false);
       setError('');
 
       const repos = response.data.items;
-      const pagesCount = response.headers.link
-        .split(',')[1]
-        .split('&')[1]
-        .split('=')[1];
+      const pagesCount: number = parseInt(
+        response.headers.link.split(',')[1].split('&')[1].split('=')[1],
+        10,
+      );
+
+      setNumberOfPages(pagesCount);
 
       setCurrentPageRepos(repos);
-      setNumberOfPages(parseInt(pagesCount, 0));
     } catch (err) {
-      setError(`Houve um problema na requisicao. ${err.message} !`);
+      if (page > numberOfPages && numberOfPages) {
+        setError(`Esta listagem possui ${numberOfPages} páginas!`);
+      } else {
+        setError(`Houve um problema na requisição. ${err.message} !`);
+      }
+
       setOpenToast(true);
       setNumberOfPages(0);
       setCurrentPageRepos([]);
@@ -77,7 +85,7 @@ const Dashboard: React.FC = () => {
     if (languages.includes(languageFilter)) {
       getRepos();
     }
-  }, [page, languageFilter, getRepos]);
+  }, [languageFilter, getRepos]);
 
   const handleChange = useCallback(async (event: any, value: unknown) => {
     const language = value as string;
@@ -135,7 +143,6 @@ const Dashboard: React.FC = () => {
                 onClick={() => scroll({ x: 20, y: 0 })}
               >
                 <FiNavigation2 />
-                Ir para o topo
               </Fab>
             )}
           </ScrollTo>
@@ -185,23 +192,16 @@ const Dashboard: React.FC = () => {
       />
 
       <PagesIndex>
-        {numberOfPages > 0 && (
-          <Pagination
-            count={numberOfPages}
-            page={page}
-            onChange={handlePageChange}
-            siblingCount={0}
-            boundaryCount={2}
-            size="large"
-          />
+        {currentPageRepos.length > 0 && (
+          <Pagination count={100} page={page} onChange={handlePageChange} />
         )}
       </PagesIndex>
 
       <Repositories>
         {loading && !error ? (
           <>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
-              <SkeletonDiv>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
+              <SkeletonDiv key={item}>
                 <Skeleton variant="circle" width={64} height={64} />
                 <div>
                   <Skeleton variant="text" width={700} />

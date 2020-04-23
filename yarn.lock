@@ -1632,6 +1632,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-js-pagination@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-js-pagination/-/react-js-pagination-3.0.3.tgz#31237416173a8895fdcda08b8912a870fdd1cb95"
+  integrity sha512-tXeN/mPSnB2tt7Mn2DL2I85bGUUwA9q04BK8AbdDt6usVW/cl3osocl5P9KXkzSLeCMwQ+Arusn8ww/asMRWUA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@*":
   version "0.62.3"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.62.3.tgz#e95e6e2de14656e43280995fc260ef6b044ed1ea"

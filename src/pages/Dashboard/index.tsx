@@ -6,6 +6,8 @@ import Pagination from '@material-ui/lab/Pagination';
 import Skeleton from '@material-ui/lab/Skeleton';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 import api from '../../services/api';
 import { languages } from '../../utils/languages';
@@ -31,6 +33,11 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState('');
   const [languageFilter, setLanguageFilter] = useState('');
   const [currentPageRepos, setCurrentPageRepos] = useState<Repository[]>([]);
+  const [openToast, setOpenToast] = React.useState(false);
+
+  function Alert(props: AlertProps): JSX.Element {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
   const getRepos = useCallback(async (): Promise<void> => {
     try {
@@ -50,8 +57,11 @@ const Dashboard: React.FC = () => {
       setCurrentPageRepos(repos);
       setNumberOfPages(parseInt(pagesCount, 0));
     } catch (err) {
-      setError('Houve um problema na requisicao');
-      console.log(err.message);
+      setError(`Houve um problema na requisicao. ${err.message} !`);
+      setOpenToast(true);
+      setNumberOfPages(0);
+      setCurrentPageRepos([]);
+      setLanguageFilter('');
     }
   }, [languageFilter, page]);
 
@@ -77,10 +87,31 @@ const Dashboard: React.FC = () => {
     [],
   );
 
+  const handleCloseToast = useCallback(
+    (event?: React.SyntheticEvent, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+
+      setOpenToast(false);
+    },
+    [],
+  );
+
   return (
     <>
       <img src={logoImg} alt="Github Voyager" />
-      <Title>Explore repositórios no Github.</Title>
+      <Title>Explore repositórios no Github</Title>
+
+      <Snackbar
+        open={openToast}
+        autoHideDuration={3000}
+        onClose={handleCloseToast}
+      >
+        <Alert onClose={handleCloseToast} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
 
       <Autocomplete
         id="combo-box-demo"
@@ -130,7 +161,8 @@ const Dashboard: React.FC = () => {
             count={numberOfPages}
             page={page}
             onChange={handlePageChange}
-            siblingCount={15}
+            siblingCount={0}
+            boundaryCount={2}
             size="large"
           />
         )}

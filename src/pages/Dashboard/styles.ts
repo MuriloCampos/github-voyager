@@ -49,6 +49,10 @@ export const Repositories = styled.div`
       width: 64px;
       height: 64px;
       border-radius: 50%;
+      @media only screen and (max-width: 768px) {
+        width: 32px;
+        height: 32px;
+      }
     }
 
     div {
@@ -64,6 +68,9 @@ export const Repositories = styled.div`
         color: #a8a8b3;
         margin-top: 4px;
         max-width: 700px;
+        @media only screen and (max-width: 768px) {
+          max-width: 200px;
+        }
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

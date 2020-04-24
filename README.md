@@ -6,7 +6,7 @@
 <br />
 
 <p align="center">
-Um website responsivo para você explorar o universo dos repositórios do Github, desenvolvido em <b>TypeScript</b> 🚀️
+Um website responsivo para você explorar o universo dos repositórios do Github, desenvolvido em <b>React + TypeScript</b> 🚀️
 </p>
 
 <br />

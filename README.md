@@ -38,4 +38,8 @@ No Github voyager, você pode escolher uma linguagem a partir de uma infinidade 
 <img src="https://media.giphy.com/media/hqmYI6Ecnb4zSi4Fo5/giphy.gif" width="1011" height="565" />
 </p>
 
+<br />
 
+### :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

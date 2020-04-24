@@ -12,7 +12,7 @@ Um website responsivo para você explorar o universo dos repositórios do Github
 <br />
 <br />
 
-### Instalação
+## Instalação
 
 Este projeto utilizou o boilerplate [create-react-app](https://github.com/facebook/create-react-app) com o template de TypeScript. O boilerplate já disponibiliza scripts para build.
 
@@ -22,7 +22,9 @@ Este projeto utilizou o boilerplate [create-react-app](https://github.com/facebo
 
 Feito isso, você estará pronto para decolar! 🚀️
 
-### Limitações
+<br />
+
+## Limitações
 
 Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Github que possui algumas limitações no número de requisições por minuto. Sem autenticação, você tem direito a 10 requisições por minuto. Se configurar seu token pessoal no arquivo **src/services/api.ts**, você poderá fazer até 30 requisições. Tome cuidado e lembre-se de **NUNCA** publicar o token em algum repositório público.
 
@@ -30,7 +32,9 @@ Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Git
 <img src="https://media.giphy.com/media/MCpiclJAFrhR383Mxe/giphy.gif" width="1011" height="565" />
 </p>
 
-### Features
+<br />
+
+## Features
 
 No Github voyager, você pode escolher uma linguagem a partir de uma infinidade de opções utilizando o autocomplete. Assim que selecionada, será exibida uma lista de repositórios encontrados.
 
@@ -40,6 +44,6 @@ No Github voyager, você pode escolher uma linguagem a partir de uma infinidade 
 
 <br />
 
-### :memo: Licença
+## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

@@ -33,3 +33,9 @@ Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Git
 ### Features
 
 No Github voyager, você pode escolher uma linguagem a partir de uma infinidade de opções utilizando o autocomplete. Assim que selecionada, será exibida uma lista de repositórios encontrados.
+
+<p align="center">
+<img src="https://media.giphy.com/media/hqmYI6Ecnb4zSi4Fo5/giphy.gif" width="1011" height="565" />
+</p>
+
+

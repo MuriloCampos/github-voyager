@@ -24,7 +24,7 @@ Feito isso, você estará pronto para decolar! 🚀️
 
 ### Limitações
 
-Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Github que possui algumas limitações no número de requisições por minuto. Sem autenticação, você tem direito a 10 requisições por minuto. Se configurar seu token pessoal no arquivo **src/services/api.ts**, você poderá fazer até 30 requisições por minuto. Tome cuidado e lembre-se de **NUNCA** publicar o token em algum repositório público.
+Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Github que possui algumas limitações no número de requisições por minuto. Sem autenticação, você tem direito a 10 requisições por minuto. Se configurar seu token pessoal no arquivo **src/services/api.ts**, você poderá fazer até 30 requisições. Tome cuidado e lembre-se de **NUNCA** publicar o token em algum repositório público.
 
 <p align="center">
 <img src="https://media.giphy.com/media/MCpiclJAFrhR383Mxe/giphy.gif" width="1011" height="565" />

@@ -1,1 +1,35 @@
-github-voyager
+<p align="center">
+  <img src="https://i.imgur.com/whb1Ml0.png" width="400" />
+</p>
+
+<br />
+<br />
+
+<p align="center">
+Um website responsivo para você explorar o universo dos repositórios do Github, desenvolvido em <b>TypeScript</b> 🚀️
+</p>
+
+<br />
+<br />
+
+### Instalação
+
+Este projeto utilizou o boilerplate [create-react-app](https://github.com/facebook/create-react-app) com o template de TypeScript. O boilerplate já disponibiliza scripts para build.
+
+- Primeiro, instale as dependências necessárias rodando `yarn` ou `yarn install`
+- Com as dependências instaladas, executar `yarn start` abrirá o projeto na build de desenvolvimento que não é otimizada
+- Para a versão de produção, execute `yarn build` na pasta do projeto
+
+Feito isso, você estará pronto para decolar 🚀️
+
+### Limitações
+
+Para esta viagem, utilizamos a [API v3](https://developer.github.com/v3/) do Github que possui algumas limitações no número de requisições por minuto. Sem autenticação, você tem direito a 10 requisições por minuto. Se configurar seu token pessoal no arquivo **src/services/api.ts** poderá fazer até 30 requisições por minuto. Tome cuidado e lembre-se de **NUNCA** publicar esta API em algum repositório público.
+
+<p align="center">
+<img src="https://media.giphy.com/media/SSPrq9ZqDdJEMe1T6n/giphy.gif" width="1202" height="564" />
+</p>
+
+### Features
+
+No Github voyager você pode escolher de uma infinidade de linguagens utilizando o autocomplete, assim que selecionada será carregada a lista de repositórios encontrada.

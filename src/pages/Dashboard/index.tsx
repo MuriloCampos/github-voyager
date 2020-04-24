@@ -72,10 +72,10 @@ const Dashboard: React.FC = () => {
     } catch (err) {
       switch (err.message) {
         case 'Network Error':
-          setError(`Limite de requisições por minuto atingido !`);
+          setError('Limite de requisições por minuto atingido !');
           break;
         case 'Request failed with status code 422':
-          setError(`Nenhum repositorio encontrado !`);
+          setError('Nenhum repositorio encontrado !');
           break;
         default:
           setError(`Houve um problema na requisição. ${err.message} !`);
@@ -86,7 +86,7 @@ const Dashboard: React.FC = () => {
       setCurrentPageRepos([]);
       setLanguageFilter('');
     }
-  }, [languageFilter, page]);
+  }, [languageFilter, page, numberOfPages]);
 
   useEffect(() => {
     if (languages.includes(languageFilter)) {
